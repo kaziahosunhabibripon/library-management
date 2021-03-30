@@ -1,0 +1,10 @@
+.list-item{
+    padding:5px;
+    margin:5px;
+    justify-content:space-between;
+    align-items:center;
+    font-size:18px;
+    font-weight:bold;
+    color: rgba(0, 0, 0, 0.685);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

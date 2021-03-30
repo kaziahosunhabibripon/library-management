@@ -1,0 +1,30 @@
+.form-upper{
+    height:25%;
+}
+.form-down{
+    
+    height:70%;
+}
+label, input{
+    display:flex;
+    display:inline-block;
+    width:45%;
+    margin: 5px;
+    padding: 5px;
+    
+}
+.submit_button{
+    float: right;
+    width:10%;
+    color:green;
+    outline: none;
+    border: none;
+    background-color:rgb(189, 199, 196);
+    border-radius: 5px;
+    margin: 5px 8% 0 0;
+    
+}
+#Upload_photo{
+    
+
+}
