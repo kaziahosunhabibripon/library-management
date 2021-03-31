@@ -10,7 +10,7 @@ const Home = () => {
        
     }, [])
     return (
-        <div className="row my-2 py-2">
+        <div className="row m-0 p-0">
             {
                 books?.map(book=> <Book key={book._id} book={book}> </Book>)
             }

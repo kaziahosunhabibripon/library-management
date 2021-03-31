@@ -1,9 +1,27 @@
-.bookDiv{
-   
+.card {
+    border:none !important;
+    outline:0 !important;
+    margin: 1.5% auto;
 }
-.bookDiv img{
-    height: 70%;
-    margin:5%;
-    padding: 10%;
+
+.img-part{
     background-color:whitesmoke;
+    border-radius: 5%;
+    padding:5%;
+    justify-content: space-between;
+
+}
+.img-part img{
+    padding: 10%;
+    align-items:center;
+    justify-content:center;
+}
+
+.card-part{
+    display:flex;
+    border: none !important;
+    outline: none;
+   background-color:white !important;
+   justify-content:space-between;
+   align-items:left !important;
 }
