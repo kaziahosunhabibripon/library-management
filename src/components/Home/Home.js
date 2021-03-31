@@ -3,12 +3,7 @@ import Book from '../Book/Book';
 import './Home.css';
 const Home = () => {
     const [books, setBooks] = useState([]);
-    const [orders, setOrders] = useState([]);
-    const handleAddProduct=(book)=>{
-        const newOrders = [...orders, book];
-        console.log(book);
-        setOrders(newOrders);
-    }
+    
    
     useEffect(() => {
         fetch('http://localhost:5000/books')
@@ -20,10 +15,9 @@ const Home = () => {
         <div className="row m-0 p-0">
             {
                 books?.map(book=> <Book 
-                    key={book._id} book={book} 
-                    handleAddProduct={handleAddProduct}> 
+                    key={book._id} book={book} > 
                 </Book>)
-            }
+            }  
             
         </div>
     );

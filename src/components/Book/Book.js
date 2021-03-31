@@ -1,11 +1,15 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import {  useHistory } from 'react-router-dom';
 import './Book.css';
 
-const Book = (book) => {
-    const { Book_Name, imageurl, Author_Name, Add_Price } = book.book;
-    const handleAddProduct = book.handleAddProduct;
+const Book = ({book}) => {
+    const history = useHistory();
+    const handleAddProduct = (_id)=>{
+        history.push(`/checkout/${_id}`)
+    }
+    const {imageurl,Book_Name,Author_Name,Add_Price,_id} = book;
+    
     return (
         <Card className="col-md-4 card">
             <div className="img-part">
@@ -19,10 +23,8 @@ const Book = (book) => {
             </Card.Body>
             <div className="card-footer card-part">
                 <h3> {Add_Price}</h3>
-                <Link to='/order'>
-                    <button onClick={() => handleAddProduct(book.book)}
+                    <button onClick={() => handleAddProduct(`${_id}`)}
                         className="btn btn-primary btn-buy">Buy Now</button>
-                </Link>
             </div>
         </Card>
     );
