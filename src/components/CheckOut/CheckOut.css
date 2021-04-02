@@ -1,11 +1,13 @@
-.col-md-6{
-    justify-content: space-evenly;
+.col-md-8{
+    justify-content: space-between;
     margin: 25px auto;
     background-color:rgba(245, 245, 245, 0.527);
     border-radius:5px;
     box-shadow:5px 5px 10px 5px rgba(44, 35, 35, 0.226);  
     padding:5px;
+    
 }
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -26,6 +28,6 @@ tr:last-child{
     background-color:rgba(42, 42, 138, 0.753);
     float:right;
     border: none;
-    margin: 5px;
+    margin: 10px 5px ;
     padding: 5px 10px;
 }
