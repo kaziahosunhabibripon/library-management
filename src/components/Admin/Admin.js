@@ -55,7 +55,7 @@ const Admin = () => {
                 <div className="form-upper">
                     <h1>Add book</h1>
                 </div>
-                <form onSubmit={handleSubmit(onSubmit)} className="form-down">
+                <form onSubmit={handleSubmit(onSubmit)} className="form-down" action="/addBook" >
                     <label htmlFor="Book Name"> Book Name </label>
                     <label htmlFor="Author Name"> Author Name </label>
                     <input name="Book_Name" placeholder="Enter Name" ref={register} />

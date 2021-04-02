@@ -4,9 +4,10 @@ import {  useHistory } from 'react-router-dom';
 import './Book.css';
 
 const Book = ({book}) => {
+   
     const history = useHistory();
-    const handleAddProduct = (_id)=>{
-        history.push(`/checkout/${_id}`)
+    const handleAddProduct = (id)=>{
+        history.push(`/checkout/${id}`)
     }
     const {imageurl,Book_Name,Author_Name,Add_Price,_id} = book;
     

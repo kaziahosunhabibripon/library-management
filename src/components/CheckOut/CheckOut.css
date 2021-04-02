@@ -1,0 +1,31 @@
+.col-md-6{
+    justify-content: space-evenly;
+    margin: 25px auto;
+    background-color:rgba(245, 245, 245, 0.527);
+    border-radius:5px;
+    box-shadow:5px 5px 10px 5px rgba(44, 35, 35, 0.226);  
+    padding:5px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {   
+    text-align: left;
+    padding: 8px;
+  }
+  tr:first-child{
+    border-bottom: 1px solid #dddddd;
+  }
+tr:last-child{
+    border-top: 1px solid #dddddd;
+}
+.btn-checkout{
+    background-color:rgba(42, 42, 138, 0.753);
+    float:right;
+    border: none;
+    margin: 5px;
+    padding: 5px 10px;
+}
