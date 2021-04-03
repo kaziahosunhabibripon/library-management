@@ -3,8 +3,6 @@ import Book from '../Book/Book';
 import './Home.css';
 const Home = () => {
     const [books, setBooks] = useState([]);
-    
-   
     useEffect(() => {
         fetch('http://localhost:5000/books')
         .then(res=>res.json())

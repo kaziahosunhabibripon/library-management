@@ -9,10 +9,17 @@ const Order = () => {
     const [orders, setOrders] = useState([]);
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     useEffect(() => {
-        fetch('http://localhost:5000/order?email=' + loggedInUser.email)
+        
+        fetch('http://localhost:5000/order?email=' + loggedInUser.email,{
+            method:'GET',
+            headers:{
+                'content-type': 'application/json',
+                authorization : `Bearer ${sessionStorage.getItem('token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [])
+    }, [loggedInUser.email])
 
 
     return (
@@ -20,9 +27,9 @@ const Order = () => {
             <h4 className="text-center m-2 py-2">Order Quantity: {orders.length}</h4>   
             {  
                 orders?.map(order =>
-                    <div className="col-md-5 py-1" key={order.email}> 
+                    <div className="col-md-5 py-1" key={order._id}> 
                         <ul className="text-left">
-                            <li> <span> Order ID: {order._id}</span> </li>
+                           
                             <li> <span> Name: {order.name}</span> </li>
                             <li> <span> Email: {order.email}</span> </li>
                             <li> <span> Book Name: {order.Book_Name}</span> </li>

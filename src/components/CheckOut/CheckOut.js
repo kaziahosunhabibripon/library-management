@@ -1,17 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
 import './CheckOut.css';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
 import { Button } from '@material-ui/core';
-
+import Order from '../Order/Order';
 const CheckOut = () => {
     const { _id } = useParams();
     
     const [book, setBook] = useState({});
+   
+    const { Book_Name, Add_Price } = book;
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     useEffect(() => {
@@ -24,8 +25,8 @@ const CheckOut = () => {
 
     }, [_id])
 
-    const { Book_Name, Add_Price } = book;
-    console.log(book);
+    
+   
     const [selectedDate, setSelectedDate] = useState({
         checkIn: new Date(),
     });
@@ -38,6 +39,7 @@ const CheckOut = () => {
 
     const handleBooking = () => {
         const newBooking = { ...loggedInUser, ...selectedDate, ...book };
+        delete newBooking._id;
         fetch('http://localhost:5000/order', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -45,7 +47,7 @@ const CheckOut = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                setLoggedInUser(data);
             })
     }
 
@@ -99,8 +101,10 @@ const CheckOut = () => {
                         />
                     </Grid>
                 </MuiPickersUtilsProvider>
-                <Link to='/order'> <Button onClick={handleBooking} variant="contained" color="primary" className="btn-checkout">Checkout</Button> </Link>
+                <Button onClick={handleBooking} variant="contained" color="primary" className="btn-checkout">Checkout</Button> 
             </div>
+
+            <Order></Order>
             
         </div>
     );

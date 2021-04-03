@@ -15,12 +15,14 @@ const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const handleGoogleSignIn = () => {
         const GhProvider = new firebase.auth.GoogleAuthProvider();
+        
         firebase.auth()
             .signInWithPopup(GhProvider)
             .then((result) => {
                 const { displayName, email } = result.user;
                 const signInUser = { name: displayName, email };
                 setLoggedInUser(signInUser);
+                storeAuthToken();
                 history.replace(from);
             }).catch((error) => {
                 var errorCode = error.code;
@@ -30,6 +32,15 @@ const Login = () => {
                 console.log(errorMessage);
 
             });
+    }
+    const storeAuthToken = ()=>{
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+        .then(function(idToken) {
+          sessionStorage.setItem('token',idToken);
+          
+          }).catch(function(error) {
+           
+          });
     }
     return (
         <div>
