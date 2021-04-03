@@ -10,6 +10,7 @@ import { Button } from '@material-ui/core';
 
 const CheckOut = () => {
     const { _id } = useParams();
+    
     const [book, setBook] = useState({});
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
@@ -23,8 +24,8 @@ const CheckOut = () => {
 
     }, [_id])
 
-    const { Name, Price } = book;
-    
+    const { Book_Name, Add_Price } = book;
+    console.log(book);
     const [selectedDate, setSelectedDate] = useState({
         checkIn: new Date(),
     });
@@ -51,8 +52,6 @@ const CheckOut = () => {
     return (
         <div className="row">
             <div className="col-md-8">
-
-
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <Grid container justify="space-around">
                         <h2>Checkout</h2>
@@ -64,14 +63,14 @@ const CheckOut = () => {
                                     <th><h6>Price</h6></th>
                                 </tr>
                                 <tr>
-                                    <td><h6 name="Book_Name">{Name}</h6></td>
+                                    <td><h6 name="Book_Name">{Book_Name}</h6></td>
                                     <td><h6 name="Quantity">1</h6></td>
-                                    <td><h6 name="Price">{Price}</h6></td>
+                                    <td><h6 name="Price">{Add_Price}</h6></td>
                                 </tr>
                                 <tr>
                                     <td><h6 name="Total">Total</h6></td>
                                     <td><h6 name="Total_Quantity">1</h6></td>
-                                    <td><h6 name="Total_Price">{Price}</h6></td>
+                                    <td><h6 name="Total_Price">{Add_Price}</h6></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -102,6 +101,7 @@ const CheckOut = () => {
                 </MuiPickersUtilsProvider>
                 <Link to='/order'> <Button onClick={handleBooking} variant="contained" color="primary" className="btn-checkout">Checkout</Button> </Link>
             </div>
+            
         </div>
     );
 };

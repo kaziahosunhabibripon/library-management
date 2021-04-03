@@ -1,0 +1,15 @@
+.col-md-5{
+    justify-content: space-between;
+    margin: 25px auto;
+    background-color:rgba(245, 245, 245, 0.527);
+    border-radius:5px;
+    box-shadow:5px 5px 10px 5px rgba(44, 35, 35, 0.226);  
+    padding:5px;
+    
+    
+}
+.col-md-5 ul li{
+    color:rgba(0, 0, 0, 0.623);
+    padding:.5% 5%;
+    list-style:none;
+}
