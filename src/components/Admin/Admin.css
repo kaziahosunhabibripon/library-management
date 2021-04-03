@@ -55,6 +55,12 @@ label, input{
     font-size: 28px; 
     padding: 0px 10px;
   }
+  h6{ 
+   display: inline-block;
+   
+    
+  }
+  
   
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
