@@ -45,11 +45,20 @@ const Admin = () => {
     const [books, setBooks] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/books')
-            .then(res => res.json())
-            .then(data => setBooks(data))
-
-    }, [books])
-
+        .then(res=>res.json())
+        .then(data=>setBooks(data))
+       
+    }, [])
+const handleDeleteBook = (id)=>{
+    console.log('delete', id);
+    fetch(`http://localhost:5000/delete/${id}`,{
+        method: 'DELETE',
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        console.log(data);
+    })
+}
 
     return (
         <div className="row m-0 p-0">
@@ -104,12 +113,14 @@ const Admin = () => {
                                         </td>
                                         <td>
                                             {
-                                                books?.map(book => <h6 key={book._id}> {book.Add_Price} </h6>)
+                                                books?.map(book => <h4 key={book._id}> {book.Add_Price} </h4>)
                                             }
                                         </td>
                                         <td>
                                             {
-                                                books?.map(book => <h6 key={book._id}> Delete </h6>)
+                                                books?.map(book => <h6 key={book._id}> <button onClick={()=>handleDeleteBook(`${book._id}`)}  
+                                                 className="btn btn-delete"> 
+                                                Delete </button> </h6>) 
                                             }
                                         </td>
                                     </tr>

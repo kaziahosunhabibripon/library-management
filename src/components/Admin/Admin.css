@@ -39,9 +39,9 @@ label, input{
   }
   
   .sidenav a {
-    padding: 5% 10%;
+    padding: 5% 7%;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 18px;
     color:whitesmoke;
     display: block;
   }
@@ -57,10 +57,20 @@ label, input{
   }
   h6{ 
    display: inline-block;
+   width: 100%;
+   margin:5%;
    
+  }
+  h4{
+    padding:5px;
+  }
+  .btn-delete{
+    padding: 5px;
+    margin: 2px;
+    border: 1px solid grey;
+    background-color: rgba(170, 62, 98, 0.712);
     
   }
-  
   
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}

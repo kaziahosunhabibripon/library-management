@@ -4,7 +4,8 @@ import "firebase/auth";
 import firebaseConfig from "./firebase.config";
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
-
+import './Login.css';
+import GoogleButton from 'react-google-button'
 const Login = () => {
     const history = useHistory();
     const location = useLocation();
@@ -43,8 +44,8 @@ const Login = () => {
           });
     }
     return (
-        <div>
-            <button onClick={handleGoogleSignIn}>Google sign in</button>
+        <div className="text-center my-2 py-2">
+            <GoogleButton  onClick={handleGoogleSignIn} className="btn-google"/>
         </div>
     );
 };

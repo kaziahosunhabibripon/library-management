@@ -5,15 +5,10 @@ import './CheckOut.css';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
-
-import Order from '../Order/Order';
 import { Link } from 'react-router-dom';
 const CheckOut = () => {
     const { _id } = useParams();
-    
     const [book, setBook] = useState({});
-   
-    const { Book_Name, Add_Price } = book;
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     useEffect(() => {
@@ -24,10 +19,10 @@ const CheckOut = () => {
                 setBook(data);
             })
 
-    }, [_id])
+    }, [])
+    const { Book_Name, Add_Price } = book;
 
-    
-   
+
     const [selectedDate, setSelectedDate] = useState({
         checkIn: new Date(),
     });
@@ -78,10 +73,8 @@ const CheckOut = () => {
                             </tbody>
                         </table>
                         <KeyboardDatePicker
-                            disableToolbar
-                            variant="inline"
-                            format="dd/MM/yyyy"
                             margin="normal"
+                            format="dd/MM/yyyy"
                             id="date-picker-inline"
                             label="Book In Date"
                             value={selectedDate.CheckIn}
@@ -101,9 +94,9 @@ const CheckOut = () => {
                             }}
                         />
                     </Grid>
+                  <Link to="/order">  <button onClick={handleBooking} variant="contained" color="primary" className="btn btn-primary  btn-checkout">Checkout</button></Link>
                 </MuiPickersUtilsProvider>
-               <Link to='/order' > <button onClick={handleBooking} variant="contained" color="primary" className="btn btn-primary  btn-checkout">Checkout</button> </Link>
-            </div>   
+            </div>
         </div>
     );
 };
