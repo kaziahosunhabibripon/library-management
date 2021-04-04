@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+
 import './Order.css';
 import { UserContext } from '../../App';
 
@@ -19,7 +19,7 @@ const Order = () => {
         })
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [loggedInUser.email])
+    }, [])
 
 
     return (

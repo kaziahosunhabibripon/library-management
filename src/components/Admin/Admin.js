@@ -28,7 +28,7 @@ const Admin = () => {
             .then(res => console.log("server side", res));
     };
     const handleUploadImage = event => {
-        console.log(event.target.files[0]);
+        
         const imageData = new FormData();
         imageData.set('key', '741942c124600179153ce48ab6bb9b81');
         imageData.append('image', event.target.files[0]);
@@ -114,9 +114,9 @@ const Admin = () => {
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table>
-                        </div>
+                        </table>
                     </div>
+                </div>
             }
         </div >
     );

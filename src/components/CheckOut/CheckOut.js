@@ -5,8 +5,9 @@ import './CheckOut.css';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
-import { Button } from '@material-ui/core';
+
 import Order from '../Order/Order';
+import { Link } from 'react-router-dom';
 const CheckOut = () => {
     const { _id } = useParams();
     
@@ -101,11 +102,8 @@ const CheckOut = () => {
                         />
                     </Grid>
                 </MuiPickersUtilsProvider>
-                <Button onClick={handleBooking} variant="contained" color="primary" className="btn-checkout">Checkout</Button> 
-            </div>
-
-            <Order></Order>
-            
+               <Link to='/order' > <button onClick={handleBooking} variant="contained" color="primary" className="btn btn-primary  btn-checkout">Checkout</button> </Link>
+            </div>   
         </div>
     );
 };
