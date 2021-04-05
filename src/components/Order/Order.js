@@ -3,21 +3,20 @@ import './Order.css';
 import { UserContext } from '../../App';
 
 const Order = () => {
-    
     const [orders, setOrders] = useState([]);
-  
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    useEffect(() => {
-        
-        fetch('http://localhost:5000/order?email=' + loggedInUser.email,{
-            method:'GET',
-            headers:{
-                'content-type': 'application/json',
-                authorization : `Bearer ${sessionStorage.getItem('token')}`
-            }
-        })
+
+    useEffect(() => {   
+        fetch('http://localhost:5000/orders' )
+        // + loggedInUser.email,{
+        //     method:'GET',
+        //     headers:{
+        //         'content-type': 'application/json',
+        //         authorization : `Bearer ${sessionStorage.getItem('token')}`
+        //     }
+        // })
             .then(res => res.json())
-            .then(data => setOrders(data))
+            .then(data => console.log(data));
     }, [])
    
 

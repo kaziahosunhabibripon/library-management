@@ -11,7 +11,7 @@ const CheckOut = () => {
     const { _id } = useParams();
     
     const [book, setBook] = useState({});
-    const [orders, setOrders] = useState([]);
+    const [order, setOrder] = useState({});
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     useEffect(() => {
@@ -46,7 +46,7 @@ const CheckOut = () => {
         })
             .then(res => res.json())
             .then(data => {
-                setOrders(data);
+                setOrder(data);
             })
     }
 
