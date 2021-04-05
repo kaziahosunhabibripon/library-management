@@ -45,7 +45,7 @@ const CheckOut = () => {
         })
             .then(res => res.json())
             .then(data => {
-                setLoggedInUser(data);
+               setBook(data);
             })
     }
 
@@ -96,7 +96,7 @@ const CheckOut = () => {
                             }}
                         />
                     </Grid>
-                  <Link to="/order">  <button onClick={handleBooking} variant="contained" color="primary" className="btn btn-primary  btn-checkout">Checkout</button></Link>
+                  <Link to="/order">  <button onClick={()=>handleBooking()} variant="contained" color="primary" className="btn btn-primary  btn-checkout">Checkout</button></Link>
                 </MuiPickersUtilsProvider>
                 <Order/>
             </div>

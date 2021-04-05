@@ -9,7 +9,7 @@ import { faPencilAlt, faPlus, faThLarge } from '@fortawesome/free-solid-svg-icon
 const Admin = () => {
     const { register, handleSubmit } = useForm();
     const [imageurl, setImageUrl] = useState(null);
-   
+
     const onSubmit = data => {
         const eventData = {
             Book_Name: data.Book_Name,
@@ -50,14 +50,14 @@ const Admin = () => {
             .then(data => setBooks(data))
 
     }, [])
-    const handleDeleteBook = ( id) => {
-        
-        fetch(`http://localhost:5000/delete/${id}`, {
+    const handleDeleteBook = (_id) => {
+
+        fetch(`http://localhost:5000/delete/${_id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                setBooks(data);
             })
     }
 
@@ -93,40 +93,31 @@ const Admin = () => {
                             <h1> Products List</h1>
                         </div>
                         <div>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <th><h6> Book Name</h6> </th>
-                                        <th><h6>Author Name</h6></th>
-                                        <th><h6>Price</h6></th>
-                                        <th><h6>Action</h6></th>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            {
-                                                books?.map(book => <h6 key={book._id}> {book.Book_Name} </h6>)
-                                            }
-                                        </td>
-                                        <td>
-                                            {
-                                                books?.map(book => <h6 key={book._id}> {book.Author_Name} </h6>)
-                                            }
-                                        </td>
-                                        <td>
-                                            {
-                                                books?.map(book => <h4 key={book._id}> {book.Add_Price} </h4>)
-                                            }
-                                        </td>
-                                        <td>
-                                            {
-                                                books?.map(book => <h6 key={book._id}> <button onClick={() => handleDeleteBook(`${book._id}`)}
-                                                    className="btn btn-delete">
-                                                    Delete </button> </h6>)
-                                            }
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div className="row">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th><h6> Book Name</h6> </th>
+                                            <th><h6>Author Name</h6></th>
+                                            <th><h6>Price</h6></th>
+                                            <th><h6>Action</h6></th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                {
+                                    books?.map(book => <div key={book._id} className="col-md-12">
+                                        <ul>
+                                            <li> {book.Book_Name} </li>
+                                            <li> {book.Author_Name} </li>
+                                            <li> {book.Add_Price} </li>
+                                            <li> <button onClick={() => handleDeleteBook(`${book._id}`)}
+                                                className="btn btn-delete">
+                                                Delete </button>
+                                                </li>
+                                        </ul>
+                                    </div>)
+                                }
+                            </div>
                         </div>
                     </div>
             }

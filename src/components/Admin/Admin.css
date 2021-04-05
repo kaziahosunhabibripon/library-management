@@ -52,24 +52,34 @@ label, input{
   
   .main {
     margin-left: 160px; 
-    font-size: 28px; 
-    padding: 0px 10px;
-  }
-  h6{ 
-   display: inline-block;
-   width: 100%;
-   margin:5%;
+    font-size: 18px; 
    
   }
-  h4{
-    padding:5px;
+  h6{
+    margin:0 25%;
+    align-items:center;
+    justify-content:space-around;
   }
-  .btn-delete{
-    padding: 5px;
-    margin: 2px;
-    border: 1px solid grey;
-    background-color: rgba(170, 62, 98, 0.712);
+  ul{
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:35% 40% 10% 10%;
     
+  }
+  li{ 
+    
+   list-style:none;
+   justify-content:center;
+   align-items:center;
+   margin:5px 0px;
+   padding:0px;
+  
+  }
+  
+  .btn-delete{
+    
+    background-color: rgba(170, 62, 98, 0.712);
   }
   
   @media screen and (max-height: 450px) {
