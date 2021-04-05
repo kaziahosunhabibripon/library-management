@@ -16,25 +16,26 @@ const Order = () => {
         //     }
         // })
             .then(res => res.json())
-            .then(data => console.log(data));
+            .then(data => setOrders(data));
     }, [])
    
 
 
     return (
         <div className="row m-0 p-0">
-            <h4 className="text-center m-2 py-2">Order Quantity: {orders.length}</h4>   
+           <div className="col-md-8">
+                <h4 className="text-center m-2 py-2">Order Quantity: {orders.length}</h4>   
+           </div>
             {  
                 orders?.map(order =>
-                    <div className="col-md-5 py-1" key={order.email}> 
-                        <ul className="text-left">
-                           
-                            <li> <span> Name: {order.name}</span> </li>
-                            <li> <span> Email: {order.email}</span> </li>
-                            <li> <span> Book Name: {order.Book_Name}</span> </li>
-                            <li> <span> Author Name: {order.Author_Name}</span> </li>
-                            <li> <span> Price: {order.Add_Price}</span> </li>
-                            <li> <span> Date and Time : {(new Date(order.checkIn).toString())}</span> </li>
+                    <div className="col-md-8" key={order._id}> 
+                        <ul className="orderDiv"> 
+                            <li>  Name: {order.name}</li>
+                            <li>  Email: {order.email} </li>
+                            <li> Book Name: {order.Book_Name} </li>
+                            <li>  Author Name: {order.Author_Name} </li>
+                            <li>  Price: {order.Add_Price} </li>
+                            <li>  Date and Time : {(new Date(order.checkIn).toString())} </li>
                         </ul>
                     </div>)
                }
