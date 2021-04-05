@@ -18,7 +18,7 @@ const Order = () => {
         })
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [loggedInUser?.email])
+    }, [])
    
 
 

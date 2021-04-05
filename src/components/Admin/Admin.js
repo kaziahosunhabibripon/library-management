@@ -50,14 +50,14 @@ const Admin = () => {
             .then(data => setBooks(data))
 
     }, [])
-    const handleDeleteBook = (_id) => {
+    const handleDeleteBook = (id) => {
 
-        fetch(`http://localhost:5000/delete/${_id}`, {
+        fetch(`http://localhost:5000/delete/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
             .then(data => {
-                setBooks(data);
+                console.log(data);
             })
     }
 
@@ -105,7 +105,7 @@ const Admin = () => {
                                     </tbody>
                                 </table>
                                 {
-                                    books?.map(book => <div key={book._id} className="col-md-12">
+                                    books.map(book => <div key={book._id} className="col-md-12">
                                         <ul>
                                             <li> {book.Book_Name} </li>
                                             <li> {book.Author_Name} </li>
