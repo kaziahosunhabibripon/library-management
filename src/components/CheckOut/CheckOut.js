@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import Order from '../Order/Order';
 const CheckOut = () => {
     const { _id } = useParams();
-
+    
     const [book, setBook] = useState({});
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
@@ -22,6 +22,8 @@ const CheckOut = () => {
 
     }, [_id])
    
+    
+
     const [selectedDate, setSelectedDate] = useState({
         checkIn: new Date(),
     });
@@ -32,10 +34,11 @@ const CheckOut = () => {
         setSelectedDate(newDate);
     };
     const {Book_Name, Add_Price} = book;
+    
     const handleBooking = () => {
         const newBooking = { ...loggedInUser, ...selectedDate, ...book };
         delete newBooking._id;
-        fetch('http://localhost:5000/order', {
+        fetch(`http://localhost:5000/order`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newBooking)

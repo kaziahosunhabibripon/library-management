@@ -1,8 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Order.css';
 import { UserContext } from '../../App';
+
 const Order = () => {
+    
     const [orders, setOrders] = useState([]);
+  
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     useEffect(() => {
         
@@ -15,7 +18,7 @@ const Order = () => {
         })
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [loggedInUser.email])
+    }, [loggedInUser?.email])
    
 
 
@@ -24,7 +27,7 @@ const Order = () => {
             <h4 className="text-center m-2 py-2">Order Quantity: {orders.length}</h4>   
             {  
                 orders?.map(order =>
-                    <div className="col-md-5 py-1" key={order._id}> 
+                    <div className="col-md-5 py-1" key={order.email}> 
                         <ul className="text-left">
                            
                             <li> <span> Name: {order.name}</span> </li>
