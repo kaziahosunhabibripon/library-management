@@ -1,13 +1,14 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import {  useHistory } from 'react-router-dom';
+
 import './Book.css';
 
 const Book = ({book}) => {
    
     const history = useHistory();
-    const handleAddProduct = (id)=>{
-        history.push(`/checkout/${id}`)
+    const handleAddProduct = (_id)=>{
+        history.push(`/checkout/${_id}`)
     }
     const {imageurl,Book_Name,Author_Name,Add_Price,_id} = book;
     

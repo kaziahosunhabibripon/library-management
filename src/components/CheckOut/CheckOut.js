@@ -6,23 +6,22 @@ import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
 import { Link } from 'react-router-dom';
+import Order from '../Order/Order';
 const CheckOut = () => {
     const { _id } = useParams();
+
     const [book, setBook] = useState({});
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     useEffect(() => {
-        const url = (`http://localhost:5000/books/${_id}`)
-        fetch(url)
+        fetch(`http://localhost:5000/books/${_id}`)
             .then(res => res.json())
             .then(data => {
                 setBook(data);
             })
 
-    }, [])
-    const { Book_Name, Add_Price } = book;
-
-
+    }, [_id])
+   
     const [selectedDate, setSelectedDate] = useState({
         checkIn: new Date(),
     });
@@ -32,7 +31,7 @@ const CheckOut = () => {
         newDate.checkIn = date;
         setSelectedDate(newDate);
     };
-
+    const {Book_Name, Add_Price} = book;
     const handleBooking = () => {
         const newBooking = { ...loggedInUser, ...selectedDate, ...book };
         delete newBooking._id;
@@ -96,6 +95,7 @@ const CheckOut = () => {
                     </Grid>
                   <Link to="/order">  <button onClick={handleBooking} variant="contained" color="primary" className="btn btn-primary  btn-checkout">Checkout</button></Link>
                 </MuiPickersUtilsProvider>
+                <Order/>
             </div>
         </div>
     );

@@ -28,7 +28,7 @@ const Admin = () => {
             .then(res => console.log("server side", res));
     };
     const handleUploadImage = event => {
-        
+
         const imageData = new FormData();
         imageData.set('key', '741942c124600179153ce48ab6bb9b81');
         imageData.append('image', event.target.files[0]);
@@ -43,22 +43,23 @@ const Admin = () => {
     }
     const [show, setShow] = useState(true);
     const [books, setBooks] = useState([]);
+
     useEffect(() => {
         fetch('http://localhost:5000/books')
-        .then(res=>res.json())
-        .then(data=>setBooks(data))
-       
+            .then(res => res.json())
+            .then(data => setBooks(data))
+
     }, [])
-const handleDeleteBook = (id)=>{
-    console.log('delete', id);
-    fetch(`http://localhost:5000/delete/${id}`,{
-        method: 'DELETE',
-    })
-    .then(res=>res.json())
-    .then(data=>{
-        console.log(data);
-    })
-}
+    const handleDeleteBook = ( id) => {
+        
+        fetch(`http://localhost:5000/delete/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+    }
 
     return (
         <div className="row m-0 p-0">
@@ -118,16 +119,16 @@ const handleDeleteBook = (id)=>{
                                         </td>
                                         <td>
                                             {
-                                                books?.map(book => <h6 key={book._id}> <button onClick={()=>handleDeleteBook(`${book._id}`)}  
-                                                 className="btn btn-delete"> 
-                                                Delete </button> </h6>) 
+                                                books?.map(book => <h6 key={book._id}> <button onClick={() => handleDeleteBook(`${book._id}`)}
+                                                    className="btn btn-delete">
+                                                    Delete </button> </h6>)
                                             }
                                         </td>
                                     </tr>
                                 </tbody>
-                        </table>
+                            </table>
+                        </div>
                     </div>
-                </div>
             }
         </div >
     );

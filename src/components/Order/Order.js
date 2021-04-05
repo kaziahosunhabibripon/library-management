@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import './Order.css';
 import { UserContext } from '../../App';
 const Order = () => {
-
     const [orders, setOrders] = useState([]);
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     useEffect(() => {
@@ -16,7 +15,7 @@ const Order = () => {
         })
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [])
+    }, [loggedInUser.email])
    
 
 
