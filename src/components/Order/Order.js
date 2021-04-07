@@ -7,17 +7,16 @@ const Order = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     useEffect(() => {   
-        fetch('http://localhost:5000/orders' )
-        // + loggedInUser.email,{
-        //     method:'GET',
-        //     headers:{
-        //         'content-type': 'application/json',
-        //         authorization : `Bearer ${sessionStorage.getItem('token')}`
-        //     }
-        // })
+        fetch('http://localhost:5000/orders?email+' + loggedInUser.email,{
+            method:'GET',
+            headers:{
+                'content-type': 'application/json',
+                authorization : `Bearer ${sessionStorage.getItem('token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setOrders(data));
-    }, [])
+    }, [loggedInUser.email])
    
 
 

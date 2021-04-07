@@ -9,22 +9,20 @@ import { Link } from 'react-router-dom';
 
 const CheckOut = () => {
     const { _id } = useParams();
-    
-    const [book, setBook] = useState({});
-    const [order, setOrder] = useState({});
+
+    const [book, setBook] = useState([]);
+    const [orders, setOrder] = useState({});
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     useEffect(() => {
         fetch(`http://localhost:5000/books/${_id}`)
             .then(res => res.json())
             .then(data => {
-                setBook(data);
+                setBook(data[0]);
+               
             })
 
-    }, [_id])
-   
-    
-
+    }, [])
     const [selectedDate, setSelectedDate] = useState({
         checkIn: new Date(),
     });
@@ -34,10 +32,11 @@ const CheckOut = () => {
         newDate.checkIn = date;
         setSelectedDate(newDate);
     };
-    const {Book_Name, Add_Price} = book;
-    
+   
+   const{Book_Name,Add_Price}=book;
+  
     const handleBooking = () => {
-        const newBooking = { ...loggedInUser, ...selectedDate, ...book };
+        const newBooking = { ...loggedInUser, ...selectedDate};
         delete newBooking._id;
         fetch(`http://localhost:5000/order`, {
             method: 'POST',
@@ -64,14 +63,23 @@ const CheckOut = () => {
                                     <th><h6>Price</h6></th>
                                 </tr>
                                 <tr>
-                                    <td><h6 name="Book_Name">{Book_Name}</h6></td>
-                                    <td><h6 name="Quantity">1</h6></td>
-                                    <td><h6 name="Price">{Add_Price}</h6></td>
+                                    <td>
+                                        <h6 name="Book_Name"> {Book_Name}</h6>         
+                                    </td>
+                                    <td>
+                                        <h6 name="Quantity"> 1</h6>         
+                                    </td>
+                                    <td>
+                                        <h6 name="Price"> {Add_Price}</h6>         
+                                    </td>
+                                    
                                 </tr>
                                 <tr>
                                     <td><h6 name="Total">Total</h6></td>
                                     <td><h6 name="Total_Quantity">1</h6></td>
-                                    <td><h6 name="Total_Price">{Add_Price}</h6></td>
+                                    <td>
+                                        <h6 name="Price"> {Add_Price}</h6>         
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -97,7 +105,7 @@ const CheckOut = () => {
                             }}
                         />
                     </Grid>
-                  <Link to="/order">  <button onClick={()=>handleBooking()} variant="contained" color="primary" className="btn btn-primary  btn-checkout">Checkout</button></Link>
+                  <Link to="/order">  <button onClick={()=>handleBooking} variant="contained" color="primary" className="btn btn-primary  btn-checkout">Checkout</button></Link>
                 </MuiPickersUtilsProvider>
             </div>
         </div>

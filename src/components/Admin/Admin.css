@@ -60,14 +60,14 @@ label, input{
     align-items:center;
     justify-content:space-around;
   }
-  ul{
+  .admin-product {
     margin:0;
     padding:0;
     display:grid;
     grid-template-columns:35% 40% 10% 10%;
     
   }
-  li{ 
+ .admin-product ul, li{ 
     
    list-style:none;
    justify-content:center;

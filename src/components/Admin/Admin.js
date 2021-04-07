@@ -106,7 +106,7 @@ const Admin = () => {
                                 </table>
                                 {
                                     books.map(book => <div key={book._id} className="col-md-12">
-                                        <ul>
+                                        <ul className="admin-product">
                                             <li> {book.Book_Name} </li>
                                             <li> {book.Author_Name} </li>
                                             <li> {book.Add_Price} </li>

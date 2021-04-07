@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Card } from 'react-bootstrap';
 import {  useHistory } from 'react-router-dom';
 
@@ -8,10 +8,11 @@ const Book = ({book}) => {
    
     const history = useHistory();
     const handleAddProduct = (_id)=>{
-        history.push(`/checkout/${_id}`)
+        history.push(`/checkout/${_id}`);
+       
     }
-    const {imageurl,Book_Name,Author_Name,Add_Price,_id} = book;
-    
+    const {imageurl,Book_Name,Author_Name,Add_Price, _id} = book;
+   
     return (
         <Card className="col-md-4 card">
             <div className="img-part">
@@ -25,7 +26,7 @@ const Book = ({book}) => {
             </Card.Body>
             <div className="card-footer card-part">
                 <h3> {Add_Price}</h3>
-                    <button onClick={() => handleAddProduct(`${_id}`)}
+                    <button onClick={() => handleAddProduct(_id)}
                         className="btn btn-primary btn-buy">Buy Now</button>
             </div>
         </Card>
