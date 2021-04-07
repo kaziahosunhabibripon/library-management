@@ -8,16 +8,10 @@ const Order = () => {
     const [orders, setOrders] = useState([]);
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=` + loggedInUser.email,{
-                method:'GET',
-                headers:{
-                    'content-type': 'application/json',
-                    authorization : `Bearer ${sessionStorage.getItem('token')}`
-                }
-            })
+        fetch('http://localhost:5000/order?email='+loggedInUser.email)
             .then(res => res.json())
-            .then(data => console.log(data));
-    }, [])
+            .then(data => setOrders(data));
+    }, [loggedInUser.email])
 
    
     return (

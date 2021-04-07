@@ -22,13 +22,10 @@ const Login = () => {
                 const { displayName, email } = result.user;
                 const signInUser = { name: displayName, email };
                 setLoggedInUser(signInUser);
-                storeAuthToken();
+                // storeAuthToken();
                 history.replace(from);
             }).catch((error) => {
-                var errorCode = error.code;
                 var errorMessage = error.message;
-                var email = error.email;
-                var credential = error.credential;
                 console.log(errorMessage);
 
             });
@@ -38,7 +35,8 @@ const Login = () => {
         .then(function(idToken) {
           sessionStorage.setItem('token',idToken);
           
-          }).catch(function(error) {
+          })
+          .catch(function(error) {
            
           });
     }

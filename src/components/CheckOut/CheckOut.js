@@ -50,8 +50,7 @@ const CheckOut = () => {
             .then(res => res.json())
             .then(data => {
                 setOrder(data);
-                history.push('/order');
-               
+                history.push('/order');            
             })
     }
     
@@ -111,12 +110,10 @@ const CheckOut = () => {
                             }}
                         />
                     </Grid>
-
-                    <Button onClick={ handleBooking } variant="contained" color="primary"
+                    <Button onClick={()=> handleBooking ()} variant="contained" color="primary"
                         className="btn btn-primary  btn-checkout">
                         Checkout
                     </Button>
-
                 </MuiPickersUtilsProvider>
             </div>
         </div>
