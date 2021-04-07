@@ -15,8 +15,7 @@ const Login = () => {
     }
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const handleGoogleSignIn = () => {
-        const GhProvider = new firebase.auth.GoogleAuthProvider();
-        
+        const GhProvider = new firebase.auth.GoogleAuthProvider();  
         firebase.auth()
             .signInWithPopup(GhProvider)
             .then((result) => {
