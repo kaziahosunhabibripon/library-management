@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Book from '../Book/Book';
 import './Home.css';
+import { CircularProgress } from '@material-ui/core';
 
 const Home = () => {
     
@@ -15,6 +16,11 @@ const Home = () => {
   
     return (
         <div className="row m-0 p-0">
+            {
+                books === 0 && 
+                <CircularProgress />
+            
+            }
             {
                 books?.map(book=> <Book 
                     key={book._id} book={book} > 

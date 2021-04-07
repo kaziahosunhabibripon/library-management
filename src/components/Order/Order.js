@@ -1,10 +1,15 @@
+import { CircularProgress } from '@material-ui/core';
 import React, { useContext, useEffect, useState } from 'react';
 
 import { UserContext } from '../../App';
 import './Order.css';
 
 
+
+
+
 const Order = () => {
+  
     const [orders, setOrders] = useState([]);
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     useEffect(() => {
@@ -18,6 +23,9 @@ const Order = () => {
         <div className="row m-0 p-0">
             <div className="col-md-8">
                 <h4 className="text-center m-2 py-2"> Order Quantity: {orders.length} </h4>
+                {
+                    orders.length === 0 && <CircularProgress />
+                }
                 {
                     orders?.map(order =>
                         <ul className="orderDiv" key={order._id}>
