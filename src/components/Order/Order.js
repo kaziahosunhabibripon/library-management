@@ -4,10 +4,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../App';
 import './Order.css';
 
-
-
-
-
 const Order = () => {
   
     const [orders, setOrders] = useState([]);
