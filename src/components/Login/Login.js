@@ -22,7 +22,6 @@ const Login = () => {
                 const { displayName, email } = result.user;
                 const signInUser = { name: displayName, email };
                 setLoggedInUser(signInUser);
-                storeAuthToken();
                 history.replace(from);
             }).catch((error) => {
                 var errorMessage = error.message;
@@ -30,16 +29,7 @@ const Login = () => {
 
             });
     }
-    const storeAuthToken = ()=>{
-        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
-        .then(function(idToken) {
-          sessionStorage.setItem('token',idToken);
-          
-          })
-          .catch(function(error) {
-           
-          });
-    }
+   
     return (
         <div className="text-center my-2 py-2">
             <GoogleButton  onClick={handleGoogleSignIn} className="btn-google"/>
