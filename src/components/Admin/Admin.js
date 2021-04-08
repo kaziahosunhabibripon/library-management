@@ -17,7 +17,7 @@ const Admin = () => {
             Add_Price: data.Add_Price,
             imageurl: imageurl
         }
-        const url = `http://localhost:5000/addBook`;
+        const url = `https://secret-inlet-76223.herokuapp.com/addBook`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -45,14 +45,14 @@ const Admin = () => {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/books')
+        fetch('https://secret-inlet-76223.herokuapp.com/books')
             .then(res => res.json())
             .then(data => setBooks(data))
 
     }, [])
     const handleDeleteBook = (id) => {
 
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://secret-inlet-76223.herokuapp.com/delete/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

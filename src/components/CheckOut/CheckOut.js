@@ -17,7 +17,7 @@ const CheckOut = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/books/${_id}`)
+        fetch(`https://secret-inlet-76223.herokuapp.com/books/${_id}`)
             .then(res => res.json())
             .then(data => {
                 setBook(data[0]);
@@ -40,7 +40,7 @@ const CheckOut = () => {
     const handleBooking = () => {
         const newBooking = { ...loggedInUser, ...selectedDate, ...books};
        delete newBooking._id;
-        fetch('http://localhost:5000/order', {
+        fetch('https://secret-inlet-76223.herokuapp.com/order', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json' 
