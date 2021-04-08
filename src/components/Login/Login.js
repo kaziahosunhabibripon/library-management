@@ -22,7 +22,7 @@ const Login = () => {
                 const { displayName, email } = result.user;
                 const signInUser = { name: displayName, email };
                 setLoggedInUser(signInUser);
-                // storeAuthToken();
+                storeAuthToken();
                 history.replace(from);
             }).catch((error) => {
                 var errorMessage = error.message;
